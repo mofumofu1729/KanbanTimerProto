@@ -1,22 +1,24 @@
 {
-  "name": "Pomodoro-Kanban",
+  "name": "kanbantimer",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/d-yuji/Pomodoro-Kanban.git"
+    "url": "git+https://github.com/d-yuji/KanbanTimer.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/d-yuji/Pomodoro-Kanban/issues"
+    "url": "https://github.com/d-yuji/KanbanTimer/issues"
   },
-  "homepage": "https://github.com/d-yuji/Pomodoro-Kanban#readme",
+  "homepage": "https://github.com/d-yuji/KanbanTimer#readme",
   "dependencies": {
     "next": "^9.4.4",
     "react": "^16.13.1",

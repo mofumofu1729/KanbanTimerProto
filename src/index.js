@@ -80,11 +80,21 @@ class App extends React.Component {
   };
 
   render() {
-    const alertFunc = function () {alert("hello")};
+    const addUmaMusumeTask = () => {
+      const newId =
+        'task-' + (Object.keys(this.state.tasks).length + 1).toString();
+      const newTask = {id: newId, content: 'playing uma-musume'};
+
+      let newState = this.state;
+      newState.tasks[newTask.id] = newTask;
+      newState.columns['column-1'].taskIds.push(newTask.id);
+      this.setState(newState);
+    };
 
     return (
       <div>
-        <div onClick={alertFunc}>hello world!!!</div>
+        <div onClick={addUmaMusumeTask}>add UmaMusume task</div>
+
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Container>
          {this.state.columnOrder.map(columnId => {
@@ -95,7 +105,7 @@ class App extends React.Component {
           })}
           </Container>
        </DragDropContext>
-     </div>
+      </div>
     );
   }
 }

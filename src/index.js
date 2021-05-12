@@ -80,7 +80,11 @@ class App extends React.Component {
   };
 
   render() {
+    const alertFunc = function () {alert("hello")};
+
     return (
+      <div>
+        <div onClick={alertFunc}>hello world!!!</div>
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Container>
         {this.state.columnOrder.map(columnId => {
@@ -91,6 +95,7 @@ class App extends React.Component {
         })}
         </Container>
       </DragDropContext>
+    </div>
     );
   }
 }

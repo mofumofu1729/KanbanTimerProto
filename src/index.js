@@ -83,7 +83,8 @@ class App extends React.Component {
     const addUmaMusumeTask = () => {
       const newId =
         'task-' + (Object.keys(this.state.tasks).length + 1).toString();
-      const newTask = {id: newId, content: 'playing uma-musume'};
+      const newContent = document.getElementById('newTaskTextBox').value;
+      const newTask = {id: newId, content: newContent};
 
       let newState = this.state;
       newState.tasks[newTask.id] = newTask;
@@ -93,7 +94,11 @@ class App extends React.Component {
 
     return (
       <div>
-        <div onClick={addUmaMusumeTask}>add UmaMusume task</div>
+        <div>
+          <input type="text" value={this.state.textBox} id='newTaskTextBox'
+                 onChange={(e) => this.setState({textBox: e.target.value})}/>
+          <input type="button" value="add Task" onClick={addUmaMusumeTask} />
+        </div>
 
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Container>

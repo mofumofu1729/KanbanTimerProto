@@ -92,12 +92,30 @@ class App extends React.Component {
       this.setState(newState);
     };
 
+    const saveTasks = () => {
+      localStorage.setItem('state', JSON.stringify(this.state));
+    };
+
+    const loadTasks = () => {
+      const savedStateString = localStorage.getItem('state');
+      const savedState = JSON.parse(savedStateString);
+      this.setState(savedState);
+    };
+
     return (
       <div>
         <div>
           <input type="text" value={this.state.textBox} id='newTaskTextBox'
                  onChange={(e) => this.setState({textBox: e.target.value})}/>
           <input type="button" value="add Task" onClick={addUmaMusumeTask} />
+        </div>
+
+        <div>
+          <input type="button" value="save tasks" onClick={saveTasks} />
+        </div>
+
+        <div>
+          <input type="button" value="load tasks" onClick={loadTasks} />
         </div>
 
         <DragDropContext onDragEnd={this.onDragEnd}>

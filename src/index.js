@@ -79,6 +79,18 @@ class App extends React.Component {
     this.setState(newState);
   };
 
+  componentDidMount() {
+    // Timer
+    const countTimer = () => {
+      let newState = this.state;
+      newState.timerSecond += 1;
+      this.setState(newState);
+      console.log("hello");
+    };
+
+    this.interval = setInterval(countTimer, 1000);
+  }
+
   render() {
     const addUmaMusumeTask = () => {
       const newId =
@@ -117,6 +129,8 @@ class App extends React.Component {
         <div>
           <input type="button" value="load tasks" onClick={loadTasks} />
         </div>
+
+        <div>Timer !! {this.state.timerSecond} </div>
 
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Container>

@@ -85,7 +85,6 @@ class App extends React.Component {
       let newState = this.state;
       newState.timerSecond += 1;
       this.setState(newState);
-      console.log("hello");
     };
 
     this.interval = setInterval(countTimer, 1000);
@@ -130,7 +129,7 @@ class App extends React.Component {
           <input type="button" value="load tasks" onClick={loadTasks} />
         </div>
 
-        <div>Timer !! {this.state.timerSecond} </div>
+        <div>Timer: {Math.floor(this.state.timerSecond / 60)} m {this.state.timerSecond % 60} s</div>
 
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Container>

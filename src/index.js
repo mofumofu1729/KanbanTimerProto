@@ -99,7 +99,7 @@ class App extends React.Component {
   }
 
   render() {
-    const addUmaMusumeTask = () => {
+    const addTask = () => {
       const newId =
         'task-' + (Object.keys(this.state.tasks).length + 1).toString();
       const newContent = document.getElementById('newTaskTextBox').value;
@@ -126,7 +126,7 @@ class App extends React.Component {
         <div>
           <input type="text" value={this.state.textBox} id='newTaskTextBox'
                  onChange={(e) => this.setState({textBox: e.target.value})}/>
-          <input type="button" value="add Task" onClick={addUmaMusumeTask} />
+          <input type="button" value="add Task" onClick={addTask} />
         </div>
 
         <div>

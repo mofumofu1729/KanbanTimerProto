@@ -26,6 +26,7 @@ const initialData = {
   columnOrder: ['column-1', 'column-2', 'column-3'],
   textBox: 'new task',
   timerSecond: 0,
+  selectedTask: null,
 };
 
 export default initialData;

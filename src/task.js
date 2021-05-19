@@ -10,13 +10,9 @@ margin-buttom: 8px;
 `;
 
 export default class Task extends React.Component {
-  showConsoleLog = () => {
-    console.log("hello");
-  };
-
   render() {
     return (
-      <div onClick={this.showConsoleLog}>
+      <div onClick={e => this.props.selectTask(this.props.task.id)}>
       <Draggable draggableId={this.props.task.id} index={this.props.index}>
         {(provided) => (
           <Container

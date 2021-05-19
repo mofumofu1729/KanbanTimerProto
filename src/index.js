@@ -13,6 +13,14 @@ const Container = styled.div`
 class App extends React.Component {
   state = initialData;
 
+  selectTask = (taskId) => {
+    const newState = {
+      ...this.state,
+      selectedTask: taskId,
+    };
+    this.setState(newState);
+  };
+
   onDragEnd = result => {
     const { destination, source, draggableId } = result;
 
@@ -129,6 +137,8 @@ class App extends React.Component {
           <input type="button" value="load tasks" onClick={loadTasks} />
         </div>
 
+        <div>selected task: {this.state.selectedTask}</div>
+
         <div>Timer: {Math.floor(this.state.timerSecond / 60)} m {this.state.timerSecond % 60} s</div>
 
         <DragDropContext onDragEnd={this.onDragEnd}>
@@ -137,7 +147,8 @@ class App extends React.Component {
             const column = this.state.columns[columnId];
             const tasks = column.taskIds.map(taskId => this.state.tasks[taskId]);
 
-            return <Column key={column.id} column={column} tasks={tasks} />;
+            return <Column key={column.id} column={column} tasks={tasks}
+                           selectTask={this.selectTask}/>;
           })}
           </Container>
        </DragDropContext>

@@ -111,6 +111,28 @@ class App extends React.Component {
       this.setState(newState);
     };
 
+    const removeTask = () => {
+      const taskId = this.state.selectedTask;
+
+      if (!(taskId in this.state.tasks)) {
+        return;
+      }
+
+      const newState = this.state;
+
+      Object.keys(newState.columns).forEach((key) => {
+        const ids = newState.columns[key].taskIds;
+
+        for (let i = 0; i < ids.length; i++) {
+          if (ids[i] === taskId) {
+            newState.columns[key].taskIds.splice(i, 1);
+          }
+        }
+      });
+
+      this.setState(newState);
+    };
+
     const saveTasks = () => {
       localStorage.setItem('state', JSON.stringify(this.state));
     };
@@ -135,6 +157,10 @@ class App extends React.Component {
 
         <div>
           <input type="button" value="load tasks" onClick={loadTasks} />
+        </div>
+
+        <div>
+          <input type="button" value="remove task" onClick={removeTask} />
         </div>
 
         <div>selected task: {this.state.selectedTask}</div>

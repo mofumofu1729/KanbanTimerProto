@@ -152,20 +152,18 @@ class App extends React.Component {
         </div>
 
         <div>
-          <input type="button" value="save tasks" onClick={saveTasks} />
-        </div>
-
-        <div>
-          <input type="button" value="load tasks" onClick={loadTasks} />
-        </div>
-
-        <div>
+          <div>selected task: {this.state.selectedTask}</div>
           <input type="button" value="remove task" onClick={removeTask} />
         </div>
 
-        <div>selected task: {this.state.selectedTask}</div>
-
         <div>Timer: {Math.floor(this.state.timerSecond / 60)} m {this.state.timerSecond % 60} s</div>
+
+        <div>
+          <input type="button" value="save tasks" onClick={saveTasks} />
+        </div>
+        <div>
+          <input type="button" value="load tasks" onClick={loadTasks} />
+        </div>
 
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Container>

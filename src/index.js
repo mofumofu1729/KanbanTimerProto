@@ -165,6 +165,10 @@ class App extends React.Component {
           <input type="button" value="load tasks" onClick={loadTasks} />
         </div>
 
+        <div>
+          <input type="button" value="play sound" />
+        </div>
+
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Container>
          {this.state.columnOrder.map(columnId => {

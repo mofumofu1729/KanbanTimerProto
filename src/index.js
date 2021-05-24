@@ -56,9 +56,8 @@ class App extends React.Component {
         },
       };
 
-
     this.setState(newState);
-    return;
+      return;
     }
 
     // Moving from one list to another
@@ -88,14 +87,22 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    // Audio
+    this.audio = new Audio("https://www.winhistory.de/more/winstart/down/o95.wav");
+
     // Timer
-    const countTimer = () => {
+    const countTimerHandler = () => {
       let newState = this.state;
-      newState.timerSecond += 1;
+      newState.timerSecond -= 1;
+
+      if (newState.timerSecond === 0) {  // 時間が来たらタイマーを鳴らす
+        this.audio.play();
+      }
+
       this.setState(newState);
     };
 
-    this.interval = setInterval(countTimer, 1000);
+    this.interval = setInterval(countTimerHandler, 1000);
   }
 
   render() {
@@ -143,6 +150,20 @@ class App extends React.Component {
       this.setState(savedState);
     };
 
+    const resetTimer = (minutes) => {
+      const newState = this.state;
+      newState.timerSecond = minutes * 60;
+      this.setState(newState);
+    };
+
+    const getSelectedTaskContent = () => {
+      const taskId = this.state.selectedTask;
+      if (taskId === null) {
+        return "";
+      }
+      return ("●" + this.state.tasks[taskId].content);
+    };
+
     return (
       <div>
         <div>
@@ -152,21 +173,23 @@ class App extends React.Component {
         </div>
 
         <div>
-          <div>selected task: {this.state.selectedTask}</div>
+          <div>selected task: {getSelectedTaskContent()}</div>
           <input type="button" value="remove task" onClick={removeTask} />
         </div>
 
-        <div>Timer: {Math.floor(this.state.timerSecond / 60)} m {this.state.timerSecond % 60} s</div>
+        <div>
+          <div>Timer: {Math.floor(this.state.timerSecond / 60)} m {this.state.timerSecond % 60} s</div>
+          <div>
+            <input type="button" value="reset Timer: 25min" onClick={() => {resetTimer(25);}}/>
+            <input type="button" value="reset Timer: 5min" onClick={() => {resetTimer(5);}}/>
+          </div>
+        </div>
 
         <div>
           <input type="button" value="save tasks" onClick={saveTasks} />
         </div>
         <div>
           <input type="button" value="load tasks" onClick={loadTasks} />
-        </div>
-
-        <div>
-          <input type="button" value="play sound" />
         </div>
 
         <DragDropContext onDragEnd={this.onDragEnd}>

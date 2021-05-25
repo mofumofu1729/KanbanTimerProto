@@ -140,6 +140,15 @@ class App extends React.Component {
       this.setState(newState);
     };
 
+    const updateTask = () => {
+      const selectedTaskId = this.state.selectedTask;
+      const newContent = this.state.textBox;
+
+      const newState = this.state;
+      newState.tasks[selectedTaskId].content = newContent;
+      this.setState(newState);
+    };
+
     const saveTasks = () => {
       localStorage.setItem('state', JSON.stringify(this.state));
     };
@@ -174,6 +183,10 @@ class App extends React.Component {
 
         <div>
           <div>selected task: {getSelectedTaskContent()}</div>
+          <input type="button" value="update task" onClick={updateTask} />
+        </div>
+
+        <div>
           <input type="button" value="remove task" onClick={removeTask} />
         </div>
 

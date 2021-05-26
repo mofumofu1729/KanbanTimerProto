@@ -17,6 +17,7 @@ class App extends React.Component {
     const newState = {
       ...this.state,
       selectedTask: taskId,
+      textBox: this.state.tasks[taskId].content,
     };
     this.setState(newState);
   };

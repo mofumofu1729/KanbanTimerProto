@@ -192,7 +192,7 @@ class App extends React.Component {
         </div>
 
         <div>
-          <div>Timer: {Math.floor(this.state.timerSecond / 60)} m {this.state.timerSecond % 60} s</div>
+          <div>Timer: {(this.state.timerSecond/60)>0 ? Math.floor(this.state.timerSecond / 60) : Math.ceil(this.state.timerSecond/60)} m {this.state.timerSecond % 60} s</div>
           <div>
             <input type="button" value="reset Timer: 25min" onClick={() => {resetTimer(25);}}/>
             <input type="button" value="reset Timer: 5min" onClick={() => {resetTimer(5);}}/>

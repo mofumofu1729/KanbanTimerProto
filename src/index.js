@@ -166,14 +166,6 @@ class App extends React.Component {
       this.setState(newState);
     };
 
-    const getSelectedTaskContent = () => {
-      const taskId = this.state.selectedTask;
-      if (taskId === null) {
-        return "";
-      }
-      return ("●" + this.state.tasks[taskId].content);
-    };
-
     return (
       <div>
         <div>
@@ -183,7 +175,6 @@ class App extends React.Component {
         </div>
 
         <div>
-          <div>selected task: {getSelectedTaskContent()}</div>
           <input type="button" value="update task" onClick={updateTask} />
         </div>
 

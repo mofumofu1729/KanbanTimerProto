@@ -213,7 +213,8 @@ class App extends React.Component {
             const tasks = column.taskIds.map(taskId => this.state.tasks[taskId]);
 
             return <Column key={column.id} column={column} tasks={tasks}
-                           selectTask={this.selectTask}/>;
+                           selectTask={this.selectTask}
+                           selectedTaskId={this.state.selectedTask}/>;
           })}
           </Container>
        </DragDropContext>
